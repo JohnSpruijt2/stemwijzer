@@ -5,12 +5,12 @@ body {
 #page {
     width: 65%;
     margin: 0 auto;
-    height: 100vh;
+    height: 60rem;
 }
 #content {
     background-color: white;
     max-width: 70%;
-    height: 90%;
+    min-height: 90%;
     float: left;
 }
 #top {
@@ -22,7 +22,7 @@ body {
 }
 #parties {
     width: 30%;
-    height: 90%;
+    min-height: 90%;
     box-sizing: border-box;
     padding: 2.5rem;
     float: right;
@@ -73,4 +73,33 @@ body {
 }
 #parties img {
     max-width: 100%;
+}
+
+
+#test {
+    background-color: white;
+    min-height: 75%;
+    margin-top: 0.5rem;
+    padding: 1rem;
+}
+#back {
+    height: 3rem;
+    width: 3rem;
+    font-size: 1rem;
+    margin: 1rem;
+}
+#form {
+    margin: 0 5rem;
+}
+#whatAbout {
+    font-weight: bold;
+}
+#question {
+    height: 15rem;
+}
+#agree, #none, #disagree {
+    width: 17rem;
+    height: 5rem;
+    font-size: 2rem;
+    margin: auto;
 }
