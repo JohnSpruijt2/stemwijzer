@@ -2,3 +2,75 @@ body {
     background-image: url('../img/image.png');
     background-size: cover;
 }
+#page {
+    width: 65%;
+    margin: 0 auto;
+    height: 100vh;
+}
+#content {
+    background-color: white;
+    max-width: 70%;
+    height: 90%;
+    float: left;
+}
+#top {
+    margin: 3rem;
+}
+#middle {
+    border-top: 0.2rem dotted grey;
+    padding: 2rem;
+}
+#parties {
+    width: 30%;
+    height: 90%;
+    box-sizing: border-box;
+    padding: 2.5rem;
+    float: right;
+}
+#stemwijzerLogo {
+    max-width: 20rem;
+}
+#blueBig, #subtitle {
+    font-weight: bold;
+}
+#blueBig {
+    margin-bottom: 5rem;
+}
+#access i, #security i{
+    font-size: 3rem;
+    float: left;
+    margin-right: 1rem;
+    padding: 1rem;
+}
+#access, #security {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+#accesSecurity {
+    width: 50%;
+    float: left;
+}
+#startBtn {
+    width: 17rem;
+    height: 5rem;
+    font-size: 2rem;
+    float: right;
+}
+#parties div:not(.tinyContainer) {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0.2rem;
+    float: left;
+}
+#parties div img{
+    width: 70%;
+    height: 70%;
+    margin: 15%;
+}
+.tinyContainer {
+    width: 100%;
+    float: left;
+}
+#parties img {
+    max-width: 100%;
+}
