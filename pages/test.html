@@ -8,24 +8,23 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
     <link rel="stylesheet" href="../styles/style.css">
 </head>
-<body>
-    <!--<script src="http://stemwijzer.dvc-icta.nl/data.js"></script>-->
-    <script src="http://stemwijzer.dvc-icta.nl/testdata.js"></script>
-    <script src="../script.js"></script>
-
+<body onload="nextQuestion(-1)">
     <section id="page">
         <div id="test">
             <a href="../index.html" id="back" class="w3-button w3-light-grey w3-circle"><i class="fas fa-arrow-left"></i></a>
 
             <div id="form">
             <h1 id="whatAbout" class="w3-text-cyan">0. waar over</h1>
-            <h1 id="question">Hier staat een stelling die jij moet beantwoorden met de knoppen hier onder, heel ingewikkeld is het niet en ik hoop dat het lukt om uit te vogelen wat de knopen zijn.</h1>
-            <button id="agree" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Eens</button>
-            <button id="none" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Geen van beide</button>
-            <button id="disagree" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Oneens</button>
+            <h1 id="question">Hier staat een stelling.</h1>
+            <button onclick="answer('pro',0)" id="agree" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Eens</button>
+            <button onclick="answer('none',0)" id="none" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Geen van beide</button>
+            <button onclick="answer('contra',0)" id="disagree" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Oneens</button>
+            <button onclick="answer('skip',0)" id="skip" class="w3-button w3-round-large w3-none w3-text-grey w3-hover-none w3-hover-text-black">Sla deze vraag over <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
     </section>
-
+    <!--<script src="http://stemwijzer.dvc-icta.nl/data.js"></script>-->
+    <script src="http://stemwijzer.dvc-icta.nl/testdata.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
