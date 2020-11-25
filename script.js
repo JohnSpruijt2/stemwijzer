@@ -130,10 +130,14 @@ function results() {
                 for (var k = 0; k < resultsArray.length; k++) {
                     if (resultsArray[k]['name'] == subjects[i]['parties'][j]['name']) {
                         resultsArray[k]['amount']++;
-                        console.log(resultsArray);
                     }
                 }
             }
         }
+    }
+    document.getElementById('form').innerHTML = "";
+    for (let i = 0; i < resultsArray.length; i++) {
+        document.getElementById('form').innerHTML += "<h1 class='result'>"+resultsArray[i]['name']+" - "+resultsArray[i]['amount']+" overeenkomsten</h1>"
+        
     }
 }
