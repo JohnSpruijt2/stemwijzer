@@ -1,5 +1,3 @@
-
-
 var answers = ["",""];
 var resultsArray = [
     {
@@ -115,14 +113,21 @@ function nextQuestion(current) {
     if (current == subjects.length-1) {
         results();
     } else {
-        document.getElementById("whatAbout").innerHTML = next+1+". "+subjects[next]['title'];
-        document.getElementById("question").innerHTML = subjects[next]['statement'];
-        document.getElementById("agree").setAttribute('onclick' , 'answer("pro",'+next+')');
-        document.getElementById("none").setAttribute('onclick' , 'answer("none",'+next+')');
-        document.getElementById("disagree").setAttribute('onclick' , 'answer("contra",'+next+')');
-        document.getElementById("skip").setAttribute('onclick' , 'answer("skip",'+next+')');
+        showQuestion(next);
     }
+
+    showPreviousAnswer(next)
 }
+
+function previousQuestion(current) {
+    var previous = current-1;
+
+    showQuestion(previous);
+
+    showPreviousAnswer(previous);
+
+}
+
 function results() {
     for (var i = 0; i < subjects.length; i++) {
         for (var j = 0; j < subjects[i]['parties'].length; j++) {
@@ -140,4 +145,42 @@ function results() {
         document.getElementById('form').innerHTML += "<h1 class='result'>"+resultsArray[i]['name']+" - "+resultsArray[i]['amount']+" overeenkomsten</h1>"
         
     }
+}
+
+function back(current) {
+    if (current == 0 || current == subjects.length-1) {
+        window.location.href = "../index.html";
+    } else {
+        previousQuestion(current);
+    }
+}
+
+function showPreviousAnswer(which) {
+    if (answers[which] == 'pro') {
+        document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
+        document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+    } else if (answers[which] == 'none') {
+        document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
+        document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+    } else if (answers[which] == 'contra') {
+        document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
+    } else {
+        document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+    }
+}
+
+function showQuestion(which) {
+        document.getElementById("whatAbout").innerHTML = which+1+". "+subjects[which]['title'];
+        document.getElementById("question").innerHTML = subjects[which]['statement'];
+        document.getElementById("pro").setAttribute('onclick' , 'answer("pro",'+which+')');
+        document.getElementById("none").setAttribute('onclick' , 'answer("none",'+which+')');
+        document.getElementById("contra").setAttribute('onclick' , 'answer("contra",'+which+')');
+        document.getElementById("skip").setAttribute('onclick' , 'answer("skip",'+which+')');
+        document.getElementById("back").setAttribute('onclick' , 'back('+which+')');
 }
