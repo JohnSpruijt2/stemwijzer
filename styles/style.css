@@ -112,3 +112,7 @@ body {
     margin: 0;
     border: black 1px solid;
 }
+
+#bigBtn, #smallBtn, #allBtn {
+    margin: 1rem 4vw;
+}
