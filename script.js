@@ -108,25 +108,17 @@ function answer(answer, current) { //function to store userers answer
 }
 
 function nextQuestion(current) { // function to determine if there is a next question
-    var next = current+1;
-
     if (current == subjects.length-1) {
         results();
     } else {
-        showQuestion(next);
-        showPreviousAnswer(next)
+        showQuestion(current+1);
+        showPreviousAnswer(current+1)
     }
-
-    
 }
 
 function previousQuestion(current) { 
-    var previous = current-1;
-
-    showQuestion(previous);
-
-    showPreviousAnswer(previous);
-
+    showQuestion(current-1);
+    showPreviousAnswer(current-1);
 }
 
 function results() { //function to determine how many points of agreement there are for each party
@@ -152,7 +144,7 @@ function showResults(what) { //function to show the results in different ways
     document.getElementById('form').innerHTML += `<button onclick="showResults('big')" id="bigBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Alleen grote partijen</button>`
     document.getElementById('form').innerHTML += `<button onclick="showResults('small')" id="smallBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Alleen kleine partijen</button>`
     document.getElementById('form').innerHTML += `<button onclick="showResults('all')" id="allBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">alle partijen</button>`
-    
+
     if (what == 'all') {
         document.getElementById('allBtn').setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
         for (let i = 0; i < resultsArray.length; i++) {
