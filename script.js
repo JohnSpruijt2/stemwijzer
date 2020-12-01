@@ -147,10 +147,12 @@ function results() { //function to determine how many points of agreement there 
 }
 
 function showResults(what) { //function to show the results in different ways
+
     document.getElementById('form').innerHTML = "";
     document.getElementById('form').innerHTML += `<button onclick="showResults('big')" id="bigBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Alleen grote partijen</button>`
     document.getElementById('form').innerHTML += `<button onclick="showResults('small')" id="smallBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Alleen kleine partijen</button>`
     document.getElementById('form').innerHTML += `<button onclick="showResults('all')" id="allBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">alle partijen</button>`
+    
     if (what == 'all') {
         document.getElementById('allBtn').setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
         for (let i = 0; i < resultsArray.length; i++) {
@@ -192,22 +194,15 @@ function back(current) { //function for the back button (left arrow button)
 }
 
 function showPreviousAnswer(which) { //function to show the previous answer incase the user goes a question back
+        document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
     if (answers[which] == 'pro') {
         document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
-        document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
-        document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
     } else if (answers[which] == 'none') {
-        document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
         document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
-        document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
     } else if (answers[which] == 'contra') {
-        document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
-        document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
         document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
-    } else {
-        document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
-        document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
-        document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
     }
 }
 
