@@ -1,98 +1,11 @@
 var answers = ["",""]; //creation of array to keep track of the inputted answers
-var resultsArray = [ //array to keep track of the amount of points of agreement
-    {
-        name: "VVD",
-        amount: 0
-    },
-    {
-        name: "CDA",
-        amount: 0
-    },
-    {
-        name: "PVV",
-        amount: 0
-    },
-    {
-        name: "D66",
-        amount: 0
-    },
-    {
-        name: "GroenLinks",
-        amount: 0
-    },
-    {
-        name: "SP",
-        amount: 0
-    },
-    {
-        name: "PvdA",
-        amount: 0
-    },
-    {
-        name: "ChristenUnie",
-        amount: 0
-    },
-    {
-        name: "Partij voor de Dieren",
-        amount: 0
-    },
-    {
-        name: "SGP",
-        amount: 0
-    },
-    {
-        name: "DENK",
-        amount: 0
-    },
-    {
-        name: "Forum voor Democratie",
-        amount: 0
-    },
-    {
-        name: "Lokaal in de Kamer",
-        amount: 0
-    },
-    {
-        name: "OndernemersPartij",
-        amount: 0
-    },
-    {
-        name: "VNL",
-        amount: 0
-    },
-    {
-        name: "Nieuwe Wegen",
-        amount: 0
-    },
-    {
-        name: "Piratenpartij",
-        amount: 0
-    },
-    {
-        name: "Artikel 1",
-        amount: 0
-    },
-    {
-        name: "Libertarische Partij",
-        amount: 0
-    },
-    {
-        name: "50Plus",
-        amount: 0
-    },
-    {
-        name: "Vrijzinnige Partij",
-        amount: 0
-    },
-    {
-        name: "Libertarische Parti",
-        amount: 0
-    },
-    {
-        name: "Niet Stemmers",
+var resultsArray = [] //array to keep track of the amount of points of agreement
+for (let i = 0; i < parties.length; i++) {
+    resultsArray[i] = {
+        name: parties[i]['name'],
         amount: 0
     }
-];
+}
 const bigOrSmall = 14; //const to determine what is a primary or a secondary party
 
 
