@@ -1,5 +1,5 @@
-var answers = ["",""]; //creation of array to keep track of the inputted answers
-var resultsArray = [] //array to keep track of the amount of points of agreement
+var answers = []; //creation of array to keep track of the inputted answers
+var resultsArray = []; //array to keep track of the amount of points of agreement
 for (let i = 0; i < parties.length; i++) {
     resultsArray[i] = {
         name: parties[i]['name'],
@@ -46,9 +46,7 @@ function results() { //function to determine how many points of agreement there 
             }
         }
     }
-    
     showResults('all');
-    
 }
 
 function showResults(what) { //function to show the results in different ways
