@@ -116,3 +116,8 @@ body {
 #bigBtn, #smallBtn, #allBtn {
     margin: 1rem 4vw;
 }
+.weightedBtn {
+    margin: 1rem;
+    width: 15rem;
+
+}

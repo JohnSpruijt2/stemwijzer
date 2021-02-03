@@ -1,3 +1,4 @@
+var weighted = []; //
 var answers = []; //creation of array to keep track of the inputted answers
 var resultsArray = []; //array to keep track of the amount of points of agreement
 for (let i = 0; i < parties.length; i++) {
@@ -6,7 +7,7 @@ for (let i = 0; i < parties.length; i++) {
         amount: 0
     }
 }
-const bigOrSmall = 14; //const to determine what is a primary or a secondary party
+const bigOrSmall = 12; //const to determine what is a primary or a secondary party
 
 
 function answer(answer, current) { //function to store userers answer
@@ -22,7 +23,7 @@ function answer(answer, current) { //function to store userers answer
 
 function nextQuestion(current) { // function to determine if there is a next question
     if (current == subjects.length-1) {
-        results();
+        showWeightedQuestions();
     } else {
         showQuestion(current+1);
         showPreviousAnswer(current+1)
@@ -40,7 +41,12 @@ function results() { //function to determine how many points of agreement there 
             if (subjects[i]['parties'][j]['position'] == answers[i]) {
                 for (var k = 0; k < resultsArray.length; k++) {
                     if (resultsArray[k]['name'] == subjects[i]['parties'][j]['name']) {
-                        resultsArray[k]['amount']++;
+                        if(weighted[i] == true) {
+                            resultsArray[k]['amount']++;
+                            resultsArray[k]['amount']++;
+                        } else {
+                            resultsArray[k]['amount']++;
+                        }
                     }
                 }
             }
@@ -117,4 +123,24 @@ function showQuestion(which) { //function to move to the next question
         document.getElementById("contra").setAttribute('onclick' , 'answer("contra",'+which+')');
         document.getElementById("skip").setAttribute('onclick' , 'answer("skip",'+which+')');
         document.getElementById("back").setAttribute('onclick' , 'back('+which+')');
+}
+
+function showWeightedQuestions() {
+    document.getElementById('form').innerHTML = '<h1>Belangrijke vragen</h1>';
+    for (let i = 0; i < subjects.length; i++) {
+        document.getElementById('form').innerHTML += `<button onclick="setWeighted(`+i+`,'true')" id="weighted`+i+`" class="weightedBtn w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">`+subjects[i]['title']+`</button>`;
+    }
+    document.getElementById('form').innerHTML += `<br><br><button onclick="results()" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Bekijk resultaten</button>`;
+}
+
+function setWeighted(id, tof) {
+    if (tof == 'true') {
+        document.getElementById('weighted'+id).setAttribute('class','weightedBtn w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
+        document.getElementById('weighted'+id).setAttribute('onclick','setWeighted('+id+', "false")');
+        weighted[id] = true;
+    } else {
+        document.getElementById('weighted'+id).setAttribute('class','weightedBtn w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+        document.getElementById('weighted'+id).setAttribute('onclick','setWeighted('+id+', "true")');
+        weighted[id] = false;
+    }
 }
