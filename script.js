@@ -1,4 +1,4 @@
-var weighted = []; //
+var weighted = []; //array to keep track of the weighted questions
 var answers = []; //creation of array to keep track of the inputted answers
 var resultsArray = []; //array to keep track of the amount of points of agreement
 for (let i = 0; i < parties.length; i++) {
@@ -7,32 +7,35 @@ for (let i = 0; i < parties.length; i++) {
         amount: 0
     }
 }
-const bigOrSmall = 12; //const to determine what is a primary or a secondary party
+const bigOrSmall = 10; //const to determine what is a primary or a secondary party
+var currentQuestion = 0; //variable to keep track of the current question
 
 
-function answer(answer, current) { //function to store userers answer
+function answer(answer) { //function to store userers answer
     if (answer == "skip") {
-        if (answers[current] == null) {
-            answers[current] = "";
+        if (answers[currentQuestion] == null) {
+            answers[currentQuestion] = "";
         }
     } else {
-        answers[current] = answer;
+        answers[currentQuestion] = answer;
     }
-    nextQuestion(current);
+    nextQuestion();
 }
 
-function nextQuestion(current) { // function to determine if there is a next question
-    if (current == subjects.length-1) {
+function nextQuestion() { // function to determine if there is a next question
+    if (currentQuestion == subjects.length-1) {
         showWeightedQuestions();
     } else {
-        showQuestion(current+1);
-        showPreviousAnswer(current+1)
+        currentQuestion++;
+        showQuestion();
+        showPreviousAnswer()
     }
 }
 
-function previousQuestion(current) { 
-    showQuestion(current-1);
-    showPreviousAnswer(current-1);
+function previousQuestion() { 
+    currentQuestion--;
+    showQuestion();
+    showPreviousAnswer();
 }
 
 function results() { //function to determine how many points of agreement there are for each party
@@ -94,35 +97,30 @@ function showResults(what) { //function to show the results in different ways
     }
 }
 
-function back(current) { //function for the back button (left arrow button)
-    if (current == 0 || current == subjects.length-1) {
+function back() { //function for the back button (left arrow button)
+    if (currentQuestion == 0 || currentQuestion == subjects.length-1) {
         window.location.href = "../index.html";
     } else {
-        previousQuestion(current);
+        previousQuestion();
     }
 }
 
-function showPreviousAnswer(which) { //function to show the previous answer incase the user goes a question back
+function showPreviousAnswer() { //function to show the previous answer incase the user goes a question back
         document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
         document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
         document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
-    if (answers[which] == 'pro') {
+    if (answers[currentQuestion] == 'pro') {
         document.getElementById("pro").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
-    } else if (answers[which] == 'none') {
+    } else if (answers[currentQuestion] == 'none') {
         document.getElementById("none").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
-    } else if (answers[which] == 'contra') {
+    } else if (answers[currentQuestion] == 'contra') {
         document.getElementById("contra").setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
     }
 }
 
-function showQuestion(which) { //function to move to the next question
-        document.getElementById("whatAbout").innerHTML = which+1+". "+subjects[which]['title'];
-        document.getElementById("question").innerHTML = subjects[which]['statement'];
-        document.getElementById("pro").setAttribute('onclick' , 'answer("pro",'+which+')');
-        document.getElementById("none").setAttribute('onclick' , 'answer("none",'+which+')');
-        document.getElementById("contra").setAttribute('onclick' , 'answer("contra",'+which+')');
-        document.getElementById("skip").setAttribute('onclick' , 'answer("skip",'+which+')');
-        document.getElementById("back").setAttribute('onclick' , 'back('+which+')');
+function showQuestion() { //function to move to the next question
+        document.getElementById("whatAbout").innerHTML = currentQuestion+". "+subjects[currentQuestion]['title'];
+        document.getElementById("question").innerHTML = subjects[currentQuestion]['statement'];
 }
 
 function showWeightedQuestions() {
