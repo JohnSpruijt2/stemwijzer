@@ -64,7 +64,8 @@ function showResults(what) { //function to show the results in different ways
     document.getElementById('form').innerHTML += `<button onclick="showResults('big')" id="bigBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Alleen grote partijen</button>`
     document.getElementById('form').innerHTML += `<button onclick="showResults('small')" id="smallBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Alleen kleine partijen</button>`
     document.getElementById('form').innerHTML += `<button onclick="showResults('all')" id="allBtn" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">alle partijen</button>`
-
+    resultsArray.sort( compare );
+    resultsArray.reverse();
     if (what == 'all') {
         document.getElementById('allBtn').setAttribute('class','w3-button w3-round-large w3-blue w3-hover-cyan w3-hover-text-white');
         for (let i = 0; i < resultsArray.length; i++) {
@@ -128,7 +129,18 @@ function showWeightedQuestions() {
     for (let i = 0; i < subjects.length; i++) {
         document.getElementById('form').innerHTML += `<button onclick="setWeighted(`+i+`,'true')" id="weighted`+i+`" class="weightedBtn w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">`+subjects[i]['title']+`</button>`;
     }
-    document.getElementById('form').innerHTML += `<br><br><button onclick="results()" class="w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white">Bekijk resultaten</button>`;
+
+    var tempVar = document.createElement('br');
+    document.getElementById('form').appendChild(tempVar);
+
+    tempVar = document.createElement('br');
+    document.getElementById('form').appendChild(tempVar);
+
+    tempVar = document.createElement('button');
+    tempVar.innerHTML = "Bekijk resultaten";
+    tempVar.setAttribute('class', 'w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
+    tempVar.setAttribute('onclick', 'results()');
+    document.getElementById('form').appendChild(tempVar);
 }
 
 function setWeighted(id, tof) {
@@ -142,3 +154,13 @@ function setWeighted(id, tof) {
         weighted[id] = false;
     }
 }
+
+function compare( a, b ) {
+    if ( a.amount < b.amount ){
+      return -1;
+    }
+    if ( a.amount > b.amount ){
+      return 1;
+    }
+    return 0;
+  }
