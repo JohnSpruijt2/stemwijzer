@@ -8,7 +8,7 @@ for (let i = 0; i < parties.length; i++) {
     }
 }
 const bigOrSmall = 10; //const to determine what is a primary or a secondary party
-var currentQuestion = 0; //variable to keep track of the current question
+var currentQuestion = -1; //variable to keep track of the current question
 
 
 function answer(answer) { //function to store userers answer
@@ -120,7 +120,7 @@ function showPreviousAnswer() { //function to show the previous answer incase th
 }
 
 function showQuestion() { //function to move to the next question
-        document.getElementById("whatAbout").innerHTML = currentQuestion+". "+subjects[currentQuestion]['title'];
+        document.getElementById("whatAbout").innerHTML = currentQuestion+1+". "+subjects[currentQuestion]['title'];
         document.getElementById("question").innerHTML = subjects[currentQuestion]['statement'];
 }
 
@@ -136,7 +136,7 @@ function showWeightedQuestions() {
     tempVar = document.createElement('br');
     document.getElementById('form').appendChild(tempVar);
 
-    tempVar = document.createElement('button');
+    var tempVar = document.createElement('button');
     tempVar.innerHTML = "Bekijk resultaten";
     tempVar.setAttribute('class', 'w3-button w3-round-large w3-black w3-hover-cyan w3-hover-text-white');
     tempVar.setAttribute('onclick', 'results()');
